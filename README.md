@@ -1,3 +1,4 @@
+
 # IMDb dataset 
 
 These scripts manage the download, parsing and handling of datasets collected from public IMDb resources. 
@@ -13,9 +14,9 @@ All scripts are made available and data will be made available on the INDICIES r
 The scripts allow to download and parse data for the following endpoint : 
 
  -**Buisness** : Returning, for each movie, the budget and revenue of each movie (broken down by country where possible). 
- -**Metacritic** : Returns the metacritic score for both expert and standard users. 
+ -**Metacritic** : Returns the metacritic score for both expert and standard users.
  -**Rating** : Returns the vote repartition (between 1 and 10) for the categorie definied in enndpoint_rating file. 
- -**More like this** : Returns a list of recommended movie (15). 
+ -**More like this** : Returns a list of recommended movie (15).  
  -**Credits** : Returns the list actors and crew members if they held a position a position listed in endpoint_credits. 
  -**Bio** : Returns for each Individual the following information : Name, Gender, Name, Age (and if the person is alive). 
 
