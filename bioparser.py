@@ -9,11 +9,6 @@ import numpy as np
 import datetime
 from paser import Parser
 
-f = open ('C:/Users/antoi/Documents/IMDB/data/get_bio/nm0246062.json', "r")
-  
-# Reading from file
-dict_from_json = json.loads(f.read())
-
 class BioParser(Parser):
 
     def __init__(self) -> None:
