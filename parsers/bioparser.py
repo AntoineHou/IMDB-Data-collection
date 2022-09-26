@@ -9,6 +9,10 @@ import numpy as np
 import datetime
 from paser import Parser
 
+f = open ('C:/Users/antoi/Documents/IMDB/data/get_bio/nm0246062.json', "r")
+  
+# Reading from file
+dict_from_json = json.loads(f.read())
 
 class BioParser(Parser):
 
@@ -35,17 +39,27 @@ class BioParser(Parser):
             return dict_from_json["name"]
         else:
             return np.nan
-
+        
+    def _death (self , dict_from_json) : 
+        if 'deathDate' in dict_from_json.keys():
+            return True 
+        else : 
+            return False 
+        
     def _get_age(self, dict_from_json):
-        if "birthDate" in dict_from_json.keys():
+        if 'deathDate' in dict_from_json.keys():
+            return (datetime.datetime.strptime(dict_from_json["deathDate"], '%Y-%m-%d')-datetime.datetime.strptime(dict_from_json["birthDate"], '%Y-%m-%d')).days/365
+        elif "birthDate" in dict_from_json.keys():
             return (datetime.datetime.now()-datetime.datetime.strptime(dict_from_json["birthDate"], '%Y-%m-%d')).days/365
         else:
             return np.nan
+        
+
 
     def parse_person(self, dict_from_json, nconst):
         try :
             if self.check_file(dict_from_json) : 
-                return {'nconst': nconst ,"gender": self._get_gender(dict_from_json), "name": self._get_name(dict_from_json), "age": self._get_age(dict_from_json)}
+                return {'nconst': nconst ,"gender": self._get_gender(dict_from_json), "name": self._get_name(dict_from_json), "age": self._get_age(dict_from_json) , "dead" : self._death()}
             else : 
                 return {key: None for key in self.keys}
         except :
